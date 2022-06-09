@@ -19,7 +19,7 @@ cd CMSSW_12_2_4/src
 eval `scram runtime -sh`
 
 pydir=Configuration/GenProduction/python
-pyfile=py8_JpsiMuMu_CP5_13TeV_cfi.py
+pyfile=py8_JpsiMuMu_CP5_13_6TeV_cfi.py
 
 curl -s --insecure \
 https://raw.githubusercontent.com/alberto-sanchez/my-genproductions/master/Quarkonia2022/$pyfile \
@@ -28,5 +28,12 @@ https://raw.githubusercontent.com/alberto-sanchez/my-genproductions/master/Quark
 scram b
 cd ../../
 
-cmsDriver.py $pydir/$pyfile  --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --fileout file:gen_sim.root --conditions 122X_mcRun3_2021_realistic_v9 --beamspot Run3RoundOptics25ns13TeVLowSigmaZ --step GEN,SIM --geometry DB:Extended --era Run3 --no_exec --mc --python_filename step0_cfg.py -n 50000 || exit $? ;
+#GEN-SIM
+cmsDriver.py $pydir/$pyfile  --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --fileout file:gen_sim.root \
+--conditions 122X_mcRun3_2021_realistic_v9 --beamspot Run3RoundOptics25ns13TeVLowSigmaZ --step GEN,SIM --geometry DB:Extended --era Run3 --no_exec --mc \
+--python_filename step0_cfg.py -n 50000 || exit $? ;
 
+#GEN
+cmsDriver.py $pydir/$pyfile  --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:gen_psi.root \
+--conditions 122X_mcRun3_2021_realistic_v9 --beamspot Run3RoundOptics25ns13TeVLowSigmaZ --step GEN --geometry DB:Extended --era Run3 --no_exec --mc \
+--python_filename gen_psi_cfg.py -n 50000 || exit $? ;
