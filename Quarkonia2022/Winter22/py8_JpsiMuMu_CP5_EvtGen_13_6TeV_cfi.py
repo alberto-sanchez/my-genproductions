@@ -51,11 +51,11 @@ generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)   # Re
 
 mumufilter = cms.EDFilter("PythiaDauVFilter",
         MotherID = cms.untracked.int32(0),
-        MinPt = cms.untracked.vdouble(4.0,4.0),
+        MinPt = cms.untracked.vdouble(3.0,3.0),
         ParticleID = cms.untracked.int32(443),
         ChargeConjugation = cms.untracked.bool(False),
-        MinEta = cms.untracked.vdouble(-1.5,-1.5),
-        MaxEta = cms.untracked.vdouble(1.5,1.5),
+        MinEta = cms.untracked.vdouble(-1.6,-1.6),
+        MaxEta = cms.untracked.vdouble(1.6,1.6),
         NumberDaughters = cms.untracked.int32(2),
         DaughterIDs = cms.untracked.vint32(13, -13)
 )

@@ -54,10 +54,10 @@ mufilter = cms.EDFilter("MCMultiParticleFilter",
      Status = cms.vint32(1, 1, 1),
      ParticleID = cms.vint32(13,13,13),
      MotherID = cms.untracked.vint32(553,100553,200553),
-     PtMin = cms.vdouble(4.,4.,4.),
+     PtMin = cms.vdouble(3.,3.,3.),
      NumRequired = cms.int32(2),
-     EtaMax = cms.vdouble(1.5,1.5,1.5),
-     EtaMin = cms.vdouble(-1.5,-1.5,-1.5),
+     EtaMax = cms.vdouble(1.6,1.6,1.6),
+     EtaMin = cms.vdouble(-1.6,-1.6,-1.6),
      AcceptMore = cms.bool(True)
 )
 
