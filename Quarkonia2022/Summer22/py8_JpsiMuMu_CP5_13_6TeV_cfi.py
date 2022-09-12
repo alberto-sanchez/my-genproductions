@@ -14,7 +14,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             'Charmonium:all = on',                       # Quarkonia, MSEL=61, including feed-down
             '443:onMode = off',                          # Turn off all J/psi decays
             '443:onIfMatch = 13 -13',                    # Tun on J/psi -> mu+ mu-
-            'PhaseSpace:pTHatMin = 15.'                  # should be 5 GeV below the actual cut
+            'PhaseSpace:pTHatMin = 19.'                  # should be 5 GeV below the actual cut
             ),
         parameterSets = cms.vstring('pythia8CommonSettings',
                                     'pythia8CP5Settings',
@@ -30,8 +30,8 @@ mumufilter = cms.EDFilter("PythiaDauVFilter",
         MinPt = cms.untracked.vdouble(3.0,3.0),
         ParticleID = cms.untracked.int32(443),
         ChargeConjugation = cms.untracked.bool(False),
-        MinEta = cms.untracked.vdouble(-1.6,-1.6),
-        MaxEta = cms.untracked.vdouble(1.6,1.6),
+        MinEta = cms.untracked.vdouble(-2.4,-2.4),
+        MaxEta = cms.untracked.vdouble(2.4,2.4),
         NumberDaughters = cms.untracked.int32(2),
         DaughterIDs = cms.untracked.vint32(13, -13)
 )
@@ -40,7 +40,7 @@ oniafilter = cms.EDFilter("PythiaFilter",
     Status = cms.untracked.int32(2),
     MaxRapidity = cms.untracked.double(1.3),
     MinRapidity = cms.untracked.double(-1.3),
-    MinPt = cms.untracked.double(19.0),
+    MinPt = cms.untracked.double(24.0),
     ParticleID = cms.untracked.int32(443)
 )
 
