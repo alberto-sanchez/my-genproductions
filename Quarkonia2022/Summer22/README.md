@@ -9,13 +9,13 @@ version in either branch.
 ```
 #!/bin/bash
 source  /cvmfs/cms.cern.ch/cmsset_default.sh
-export SCRAM_ARCH=slc7_amd64_gcc10
-if [ -r CMSSW_12_4_2/src ] ; then
- echo release CMSSW_12_4_2 already exists
+export SCRAM_ARCH=el8_amd64_gcc10
+if [ -r CMSSW_12_4_8/src ] ; then
+ echo release CMSSW_12_4_8 already exists
 else
-scram p CMSSW CMSSW_12_4_2
+scram p CMSSW CMSSW_12_4_8
 fi
-cd CMSSW_12_4_2/src
+cd CMSSW_12_4_8/src
 eval `scram runtime -sh`
 
 pydir=Configuration/GenProduction/python
@@ -31,12 +31,12 @@ cd ../../
 #GEN-SIM
 cmsDriver.py $pydir/$pyfile  --python_filename step0_cfg.py --eventcontent RAWSIM \
 --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM \
---fileout file:step0.root --conditions 124X_mcRun3_2022_realistic_v8 \
---beamspot Run3RoundOptics25ns13TeVLowSigmaZ --step GEN,SIM --geometry DB:Extended \
+--fileout file:step0.root --conditions 124X_mcRun3_2022_realistic_v11 \
+--beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN,SIM --geometry DB:Extended \
 --era Run3 --no_exec --mc -n 10000 || exit $? ;
 
 #GEN
 cmsDriver.py $pydir/$pyfile  --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring \
---datatier GEN --fileout file:gen.root --conditions 124X_mcRun3_2022_realistic_v8 \
---beamspot Run3RoundOptics25ns13TeVLowSigmaZ --step GEN --geometry DB:Extended --era Run3 --no_exec --mc \
+--datatier GEN --fileout file:gen.root --conditions 124X_mcRun3_2022_realistic_v11 \
+--beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN --geometry DB:Extended --era Run3 --no_exec --mc \
 --python_filename gen_cfg.py -n 100000 || exit $? ;
